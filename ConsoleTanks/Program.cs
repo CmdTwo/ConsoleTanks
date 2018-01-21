@@ -10,6 +10,11 @@ namespace ConsoleTanks
     {
         static void Main(string[] args)
         {
+            Global.Constans.StartGame = DateTime.Now;
+
+            Map.GlobalMap map = new Map.GlobalMap();
+            map.DisplayMap();
+            Console.ReadKey();
         }
     }
 }
