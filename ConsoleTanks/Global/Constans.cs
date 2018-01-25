@@ -17,7 +17,7 @@ namespace ConsoleTanks.Global
         {
             TanksTypesPrefabLib = new Dictionary<TanksTypes, Char>
             {
-                { TanksTypes.Tank_1lvl, '☻' }
+                { TanksTypes.Tank_1lvl, '1' }
             };
 
             BlockTypesLib = new Dictionary<BlockTypes, Map.Block.Block> {

@@ -41,13 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Game.cs" />
+    <Compile Include="GameRes\AI.cs" />
     <Compile Include="GameRes\Fraction.cs" />
     <Compile Include="GameRes\GameObject.cs" />
+    <Compile Include="GameRes\GamePlayer.cs" />
+    <Compile Include="GameRes\Player.cs" />
     <Compile Include="GameRes\Tanks\Tank.cs" />
     <Compile Include="GameRes\Tanks\Tank_1lvl.cs" />
     <Compile Include="Global\BlockTypes.cs" />
     <Compile Include="Global\Constans.cs" />
     <Compile Include="Global\FractionTypes.cs" />
+    <Compile Include="Global\Position.cs" />
     <Compile Include="Global\TanksTypes.cs" />
     <Compile Include="Map\Block\Block.cs" />
     <Compile Include="Map\Block\BlockMask.cs" />

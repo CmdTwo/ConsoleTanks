@@ -23,8 +23,6 @@ namespace ConsoleTanks.Map
                     Map[i, j] = new Block.BlockMask(Global.Constans.BlockTypesLib[Global.BlockTypes.Grass]);
                 }
             }
-
-            Map[12, 13].UpdateGameObject(new GameRes.Tanks.Tank_1lvl(Global.Constans.FractionTypesLib[Global.FractionTypes.Blue]));
         }
 
         public void DisplayMap()
@@ -47,6 +45,11 @@ namespace ConsoleTanks.Map
                 }
                 Console.WriteLine();
             }
+        }
+
+        public void AddObjectOnMap(GameRes.GameObject obj)
+        {
+            Map[obj.Position.PosX, obj.Position.PosY].UpdateGameObject(obj);
         }
     }
 }

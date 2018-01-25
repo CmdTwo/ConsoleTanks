@@ -8,10 +8,11 @@ namespace ConsoleTanks.GameRes.Tanks
 {
     public class Tank : GameObject
     {
-        public Fraction Fraction { get; private set; }
-        public Tank(char prefab, Fraction fraction) : base(fraction.Color, prefab)
+        public Fraction FractionRef { get; private set; }
+
+        public Tank(char prefab, Fraction fraction, Global.Position position) : base(fraction.Color, prefab, position)
         {
-            Fraction = fraction;
+            FractionRef = fraction;
         }
     }
 }
