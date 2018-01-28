@@ -9,12 +9,12 @@ namespace ConsoleTanks.GameRes
     public abstract class GamePlayer
     {
         public Fraction Fraction { get; private set; }
-        public abstract Global.Position GetMovePosition();
-
+       
         public GamePlayer(Fraction fraction)
         {
             Fraction = fraction;
         }
-        
+
+        public abstract Common.StepAction GetStepAction();
     }
 }

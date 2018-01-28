@@ -10,11 +10,14 @@ namespace ConsoleTanks.Map
     {
         private int MapSize;
         public Block.BlockMask[,] Map { get; private set; }
+        public static GlobalMap CurrentMap { get; private set; }
 
         public GlobalMap(int mapSize = 32)
         {
             MapSize = mapSize;
             Map = new Block.BlockMask[MapSize, MapSize];
+
+            CurrentMap = this;
 
             for (int i = 0; i < MapSize; i++)
             {
@@ -49,7 +52,7 @@ namespace ConsoleTanks.Map
 
         public void AddObjectOnMap(GameRes.GameObject obj)
         {
-            Map[obj.Position.PosX, obj.Position.PosY].UpdateGameObject(obj);
+            Map[obj.Position.PosY, obj.Position.PosX].UpdateGameObject(obj);
         }
     }
 }

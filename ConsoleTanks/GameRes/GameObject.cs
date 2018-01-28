@@ -10,11 +10,16 @@ namespace ConsoleTanks.GameRes
     {
         public ConsoleColor Color { get; private set; }
         public char Prefab { get; private set; }
-        public Global.Position Position { get; private set; }
-        protected GameObject(ConsoleColor color, char prefab, Global.Position position)
+        public Common.Position Position { get; private set; }
+        protected GameObject(ConsoleColor color, char prefab, Common.Position position)
         {
             Color = color;
             Prefab = prefab;
+            Position = position;
+        }
+
+        public void UpdatePosition(Common.Position position)
+        {
             Position = position;
         }
     }

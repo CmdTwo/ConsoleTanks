@@ -10,7 +10,7 @@ namespace ConsoleTanks.GameRes.Tanks
     {
         public Fraction FractionRef { get; private set; }
 
-        public Tank(char prefab, Fraction fraction, Global.Position position) : base(fraction.Color, prefab, position)
+        public Tank(char prefab, Fraction fraction, Common.Position position) : base(fraction.Color, prefab, position)
         {
             FractionRef = fraction;
         }

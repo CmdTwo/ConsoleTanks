@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleTanks.Global;
+using ConsoleTanks.Common;
 
 namespace ConsoleTanks.GameRes
 {
@@ -20,10 +21,54 @@ namespace ConsoleTanks.GameRes
             Tank = tank;
         }
         
-        public override Position GetMovePosition()
+        public override StepAction GetStepAction()
         {
-            Tank.Position.UpdatePos(Tank.Position.PosX, Tank.Position.PosY + 1);
-            return Tank.Position;
+            StepAction action;
+            switch(Console.ReadKey().Key)
+            {
+                case (ConsoleKey.W):
+                    {
+                        action = new StepAction(StepActionMethodRefs.Move, new Dictionary<StepActionParamTypes, object> {
+                            { StepActionParamTypes.newPosition, new Position(Tank.Position.PosX, Tank.Position.PosY - 1) },
+                            { StepActionParamTypes.gameObject, Tank }
+                        });
+                        return action;
+                    }
+                case (ConsoleKey.S):
+                    {
+                        action = new StepAction(StepActionMethodRefs.Move, new Dictionary<StepActionParamTypes, object> {
+                            { StepActionParamTypes.newPosition, new Position(Tank.Position.PosX, Tank.Position.PosY + 1) },
+                            { StepActionParamTypes.gameObject, Tank }
+                        });
+                        return action;
+                    }
+                case (ConsoleKey.A):
+                    {
+                        action = new StepAction(StepActionMethodRefs.Move, new Dictionary<StepActionParamTypes, object> {
+                            { StepActionParamTypes.newPosition, new Position(Tank.Position.PosX - 1, Tank.Position.PosY) },
+                            { StepActionParamTypes.gameObject, Tank }
+                        });
+                        return action;
+                    }
+                case (ConsoleKey.D):
+                    {
+                        action = new StepAction(StepActionMethodRefs.Move, new Dictionary<StepActionParamTypes, object> {
+                            { StepActionParamTypes.newPosition, new Position(Tank.Position.PosX + 1, Tank.Position.PosY) },
+                            { StepActionParamTypes.gameObject, Tank }
+                        });
+                        return action;
+                    }
+                default:
+                    {
+                        action = new StepAction(StepActionMethodRefs.Move, new Dictionary<StepActionParamTypes, object> {
+                            { StepActionParamTypes.newPosition, new Position(Tank.Position.PosX, Tank.Position.PosY + 1) },
+                            { StepActionParamTypes.gameObject, Tank }
+                        });
+                        return action;
+                        break;
+                    }
+            }
+
         }
     }
 }

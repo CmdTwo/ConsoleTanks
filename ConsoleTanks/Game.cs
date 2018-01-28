@@ -10,13 +10,13 @@ namespace ConsoleTanks
 {
     public class Game
     {
-        GameRes.Player Player;
+        Player Player;
 
-        List<GameRes.AI> AIList;
+        List<AI> AIList;
         public Game()
         {
-            Player = GameRes.Player.Instante;
-            AIList = new List<GameRes.AI>();
+            Player = Player.Instante;
+            AIList = new List<AI>();
         }
 
         public void StartGame()
@@ -26,16 +26,32 @@ namespace ConsoleTanks
             Map.GlobalMap map = new Map.GlobalMap();
 
             Fraction playerFraction = Global.Constans.FractionTypesLib[Global.FractionTypes.White];
-            Player = new GameRes.Player(playerFraction, new GameRes.Tanks.Tank_1lvl(playerFraction, new Global.Position(1,5)));
+            Player = new Player(playerFraction, new GameRes.Tanks.Tank_1lvl(playerFraction, new Common.Position(1,5)));
 
             AIList.Add(new AI(Global.Constans.FractionTypesLib[Global.FractionTypes.Red]));
             AIList.Add(new AI(Global.Constans.FractionTypesLib[Global.FractionTypes.Blue]));
 
             map.AddObjectOnMap(Player.Tank);
 
-            map.AddObjectOnMap(AIList[0].Tanks[0]);
+            map.AddObjectOnMap(AIList[1].Tanks[0]);
+            map.AddObjectOnMap(AIList[1].Tanks[1]);
+            map.AddObjectOnMap(AIList[1].Tanks[2]);
 
             map.DisplayMap();
+            while (true)
+            {
+                Common.StepAction playerAction = Player.GetStepAction();
+                if (playerAction.ActionHandler(playerAction.Params))
+                {
+
+                }
+                Console.Clear();
+                map.DisplayMap();
+            }
+            //while(true)
+            //{
+
+            //}
 
             //Map[12, 13].UpdateGameObject(new GameRes.Tanks.Tank_1lvl(Global.Constans.FractionTypesLib[Global.FractionTypes.Blue]));
 

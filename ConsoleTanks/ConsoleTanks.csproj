@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\StepAction.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameRes\AI.cs" />
     <Compile Include="GameRes\Fraction.cs" />
@@ -52,7 +53,9 @@
     <Compile Include="Global\BlockTypes.cs" />
     <Compile Include="Global\Constans.cs" />
     <Compile Include="Global\FractionTypes.cs" />
-    <Compile Include="Global\Position.cs" />
+    <Compile Include="Common\Position.cs" />
+    <Compile Include="Global\StepActionMethodRefs.cs" />
+    <Compile Include="Global\StepActionParamTypes.cs" />
     <Compile Include="Global\TanksTypes.cs" />
     <Compile Include="Map\Block\Block.cs" />
     <Compile Include="Map\Block\BlockMask.cs" />

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleTanks.Global
+namespace ConsoleTanks.Common
 {
     public struct Position
     {
@@ -16,7 +16,7 @@ namespace ConsoleTanks.Global
         public Position(int x, int y)
         {
             PosX = x;
-            PosY = y;
+            PosY = y;            
         }
 
         public void UpdatePos(int newPosX, int newPosY)

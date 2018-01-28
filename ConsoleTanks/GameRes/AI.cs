@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleTanks.Global;
+using ConsoleTanks.Common;
 
 namespace ConsoleTanks.GameRes
 {
@@ -13,11 +14,11 @@ namespace ConsoleTanks.GameRes
         public AI(Fraction fraction) : base(fraction)
         {
             Tanks = new List<GameRes.Tanks.Tank>();
-            Tanks.Add(new GameRes.Tanks.Tank_1lvl(fraction, new Position(1, 2)));
-            Tanks.Add(new GameRes.Tanks.Tank_1lvl(fraction, new Position(1, 4)));
-            Tanks.Add(new GameRes.Tanks.Tank_1lvl(fraction, new Position(1, 3)));
+            Tanks.Add(new Tanks.Tank_1lvl(fraction, new Common.Position(1, 2)));
+            Tanks.Add(new Tanks.Tank_1lvl(fraction, new Common.Position(1, 4)));
+            Tanks.Add(new Tanks.Tank_1lvl(fraction, new Common.Position(1, 3)));
         }
-        public override Position GetMovePosition()
+        public override StepAction GetStepAction()
         {
             throw new NotImplementedException();
         }
