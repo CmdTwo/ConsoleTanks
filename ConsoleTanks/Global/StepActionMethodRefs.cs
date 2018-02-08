@@ -10,6 +10,7 @@ namespace ConsoleTanks.Global
     {
         public static bool Move(Dictionary<Global.StepActionParamTypes, object> _params)
         {
+            //FIX
             Map.GlobalMap currrentMap = Map.GlobalMap.CurrentMap;
             Common.Position newPosition = (Common.Position)_params[StepActionParamTypes.newPosition];
             GameRes.GameObject gameObject = (GameRes.GameObject)_params[StepActionParamTypes.gameObject];

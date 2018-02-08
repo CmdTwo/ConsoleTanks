@@ -54,5 +54,10 @@ namespace ConsoleTanks.Map
         {
             Map[obj.Position.PosY, obj.Position.PosX].UpdateGameObject(obj);
         }
+
+        public bool IsBorder(Common.Position position)
+        {
+            return (position.PosX == MapSize - 1 || position.PosY == MapSize - 1);            
+        }
     }
 }

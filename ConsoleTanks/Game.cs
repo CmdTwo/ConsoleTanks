@@ -48,12 +48,6 @@ namespace ConsoleTanks
                 Console.Clear();
                 map.DisplayMap();
             }
-            //while(true)
-            //{
-
-            //}
-
-            //Map[12, 13].UpdateGameObject(new GameRes.Tanks.Tank_1lvl(Global.Constans.FractionTypesLib[Global.FractionTypes.Blue]));
 
             Console.ReadKey();
         }

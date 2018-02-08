@@ -12,6 +12,9 @@ namespace ConsoleTanks.Global
         public static Dictionary<TanksTypes, char> TanksTypesPrefabLib { get; private set; }
         public static Dictionary<BlockTypes, Map.Block.Block> BlockTypesLib { get; private set; }
         public static Dictionary<FractionTypes, GameRes.Fraction> FractionTypesLib { get; private set; }
+        public static ConsoleColor ShellColor = ConsoleColor.DarkYellow;
+        public static Char ShellPrefab = '*';
+
 
         static Constans()
         {
