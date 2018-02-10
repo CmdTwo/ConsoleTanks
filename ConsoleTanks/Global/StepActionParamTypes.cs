@@ -11,5 +11,6 @@ namespace ConsoleTanks.Global
         newPosition,
         newDirection,
         gameObject,
+        direction,
     }
 }

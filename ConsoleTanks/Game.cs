@@ -26,7 +26,7 @@ namespace ConsoleTanks
             Map.GlobalMap map = new Map.GlobalMap();
 
             Fraction playerFraction = Global.Constans.FractionTypesLib[Global.FractionTypes.White];
-            Player = new Player(playerFraction, new GameRes.Tanks.Tank_1lvl(playerFraction, new Common.Position(1,5)));
+            Player = new Player(playerFraction, new GameRes.Tanks.Tank_1lvl(playerFraction, new Common.Position(1,5), Global.Direction.Down));
 
             AIList.Add(new AI(Global.Constans.FractionTypesLib[Global.FractionTypes.Red]));
             AIList.Add(new AI(Global.Constans.FractionTypesLib[Global.FractionTypes.Blue]));

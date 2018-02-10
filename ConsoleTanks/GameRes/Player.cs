@@ -58,6 +58,15 @@ namespace ConsoleTanks.GameRes
                         });
                         return action;
                     }
+                case (ConsoleKey.Spacebar):
+                    {
+                        action = new StepAction(StepActionMethodRefs.Attack, new Dictionary<StepActionParamTypes, object> {
+                            { StepActionParamTypes.gameObject, Tank },
+                            { StepActionParamTypes.direction, Tank.Direction }
+                        });
+                        return action;
+                        break;
+                    }
                 default:
                     {
                         action = new StepAction(StepActionMethodRefs.Move, new Dictionary<StepActionParamTypes, object> {

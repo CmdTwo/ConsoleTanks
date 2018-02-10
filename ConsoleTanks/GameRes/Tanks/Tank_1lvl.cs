@@ -8,6 +8,6 @@ namespace ConsoleTanks.GameRes.Tanks
 {
     class Tank_1lvl : Tank
     {
-        public Tank_1lvl(Fraction fraction, Common.Position position) : base(Global.Constans.TanksTypesPrefabLib[Global.TanksTypes.Tank_1lvl], fraction, position) { }
+        public Tank_1lvl(Fraction fraction, Common.Position position, Global.Direction direction) : base(Global.Constans.TanksTypesPrefabLib[Global.TanksTypes.Tank_1lvl], fraction, position, direction) { }
     }
 }

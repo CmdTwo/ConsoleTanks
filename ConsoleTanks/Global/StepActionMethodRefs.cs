@@ -19,8 +19,9 @@ namespace ConsoleTanks.Global
 
             gameObject.UpdatePosition(newPosition);
             currrentMap.Map[gameObject.Position.PosY, gameObject.Position.PosX].UpdateGameObject(gameObject);
-
+            ///////////////////////
             return true;
+            ///////////////////////
         }
         public static bool ChangeDirection(Dictionary<Global.StepActionParamTypes, object> _params)
         {
@@ -29,7 +30,14 @@ namespace ConsoleTanks.Global
 
         public static bool Attack(Dictionary<Global.StepActionParamTypes, object> _params)
         {
+            Map.GlobalMap currrentMap = Map.GlobalMap.CurrentMap;
+            GameRes.Tanks.Tank tank = (GameRes.Tanks.Tank)_params[StepActionParamTypes.gameObject];
+            Direction direction = (Direction)_params[StepActionParamTypes.direction];
+
+            GameRes.Shell shell = new GameRes.Shell(tank.Position, direction);
+            ///////////////////////
             return true;
+            ///////////////////////
         }
     }
 }
