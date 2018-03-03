@@ -26,7 +26,7 @@ namespace ConsoleTanks
             Map.GlobalMap map = new Map.GlobalMap();
 
             Fraction playerFraction = Global.Constans.FractionTypesLib[Global.FractionTypes.White];
-            Player = new Player(playerFraction, new GameRes.Tanks.Tank_1lvl(playerFraction, new Common.Position(1,5), Global.Direction.Down));
+            Player = new Player(playerFraction, new GameRes.Tanks.Tank_1lvl(playerFraction, new Common.Position(1, 5), Global.Direction.Up));
 
             AIList.Add(new AI(Global.Constans.FractionTypesLib[Global.FractionTypes.Red]));
             AIList.Add(new AI(Global.Constans.FractionTypesLib[Global.FractionTypes.Blue]));
@@ -37,11 +37,17 @@ namespace ConsoleTanks
             map.AddObjectOnMap(AIList[1].Tanks[1]);
             map.AddObjectOnMap(AIList[1].Tanks[2]);
 
+            map.AddObjectOnMap(new GameRes.Walls.BrickWall(new Common.Position(6, 6)));
+
             map.DisplayMap();
             while (true)
             {
                 Common.StepAction playerAction = Player.GetStepAction();
                 if (playerAction.ActionHandler(playerAction.Params))
+                {
+
+                }
+                else
                 {
 
                 }

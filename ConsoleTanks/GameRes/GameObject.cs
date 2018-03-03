@@ -26,18 +26,20 @@ namespace ConsoleTanks.GameRes
         public void UpdatePosition(Common.Position position)
         {
             Position = position;
-        }
-
-        private void DestroyGameObject()
-        {
-
-        }
+        }               
 
         public void SubtractHP(int hp)
         {
-            HP = hp;
-            if (hp == 0)
-                DestroyGameObject();
+            HP -= hp;
+            if (HP <= 0)
+                Destroyed(this);
         }
+
+        public void ChangeDirection(Global.Direction direction)
+        {
+            Direction = direction;
+        }
+
+        public event Action<GameObject> Destroyed;
     }
 }

@@ -1,40 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using ConsoleTanks.GameRes;
+using ConsoleTanks.Common;
+using System;
 
 namespace ConsoleTanks.Global
 {
     public static class StepActionMethodRefs
     {
-        public static bool Move(Dictionary<Global.StepActionParamTypes, object> _params)
+        public static bool Move(Dictionary<StepActionParamTypes, object> _params)
         {
             //FIX
             Map.GlobalMap currrentMap = Map.GlobalMap.CurrentMap;
-            Common.Position newPosition = (Common.Position)_params[StepActionParamTypes.newPosition];
-            GameRes.GameObject gameObject = (GameRes.GameObject)_params[StepActionParamTypes.gameObject];
+            Position newPosition = (Position)_params[StepActionParamTypes.newPosition];
+            GameObject gameObject = (GameObject)_params[StepActionParamTypes.gameObject];
 
-            currrentMap.Map[gameObject.Position.PosY, gameObject.Position.PosX].UpdateGameObject(null);
+            if (!currrentMap.IsBorder(newPosition))
+            {
+                GameObject gameObjectOnMap = currrentMap.Map[newPosition.PosY, newPosition.PosX].GameObj;
 
-            gameObject.UpdatePosition(newPosition);
-            currrentMap.Map[gameObject.Position.PosY, gameObject.Position.PosX].UpdateGameObject(gameObject);
-            ///////////////////////
-            return true;
-            ///////////////////////
+                if (gameObjectOnMap is WallObject)
+                {
+                    Random rand = new Random(DateTime.Now.TimeOfDay.Milliseconds);
+                    gameObjectOnMap.SubtractHP(rand.Next(40, 80));
+                }
+                else if (!(gameObjectOnMap is GameRes.Tanks.Tank))
+                {
+                    currrentMap.Map[gameObject.Position.PosY, gameObject.Position.PosX].UpdateGameObject(null);
+                    gameObject.UpdatePosition(newPosition);
+                    currrentMap.Map[gameObject.Position.PosY, gameObject.Position.PosX].UpdateGameObject(gameObject);
+                    return true;
+                }
+            }
+            return false;
         }
-        public static bool ChangeDirection(Dictionary<Global.StepActionParamTypes, object> _params)
+        public static bool ChangeDirection(Dictionary<StepActionParamTypes, object> _params)
         {
+            GameRes.Tanks.Tank tank = (GameRes.Tanks.Tank)_params[StepActionParamTypes.gameObject];
+            Direction direction = (Direction)_params[StepActionParamTypes.direction];
+            tank.ChangeDirection(direction);
             return true;
         }
 
-        public static bool Attack(Dictionary<Global.StepActionParamTypes, object> _params)
+        public static bool Attack(Dictionary<StepActionParamTypes, object> _params)
         {
             Map.GlobalMap currrentMap = Map.GlobalMap.CurrentMap;
             GameRes.Tanks.Tank tank = (GameRes.Tanks.Tank)_params[StepActionParamTypes.gameObject];
             Direction direction = (Direction)_params[StepActionParamTypes.direction];
 
-            GameRes.Shell shell = new GameRes.Shell(tank.Position, direction);
+            Shell shell = new Shell(tank.Position, direction);
             ///////////////////////
             return true;
             ///////////////////////

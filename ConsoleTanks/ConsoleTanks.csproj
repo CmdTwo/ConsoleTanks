@@ -48,6 +48,8 @@
     <Compile Include="GameRes\GameObject.cs" />
     <Compile Include="GameRes\GamePlayer.cs" />
     <Compile Include="GameRes\Player.cs" />
+    <Compile Include="GameRes\Walls\BrickWall.cs" />
+    <Compile Include="GameRes\Walls\WallObject.cs" />
     <Compile Include="GameRes\Shell.cs" />
     <Compile Include="GameRes\Tanks\Tank.cs" />
     <Compile Include="GameRes\Tanks\Tank_1lvl.cs" />

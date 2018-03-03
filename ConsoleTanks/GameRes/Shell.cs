@@ -13,7 +13,7 @@ namespace ConsoleTanks.GameRes
     {
         private Position NextPosition;
         private Func<Position> NextPositionHandler;
-        private int Damage;
+        public int Damage { get; private set; }
 
         public Shell(Position position, Direction direction) : base(Constans.ShellColor, Constans.ShellPrefab, position, 100, direction)
         {
@@ -32,35 +32,37 @@ namespace ConsoleTanks.GameRes
                     NextPositionHandler = delegate () { NextPosition.UpdatePos(NextPosition.PosX - 1, NextPosition.PosY); return NextPosition; };
                     break;
             }
-            NextPosition = position;
-            NextPosition = NextPositionHandler();
-            Damage = 20;
+            NextPosition = this.Position;
+            this.Position = NextPositionHandler();
+            Damage = 50;
             ShellLive();
         }
 
         private void ShellLive()
         {
-            bool findedObject = false;
+            bool findedObject = Map.GlobalMap.CurrentMap.Map[NextPosition.PosY, NextPosition.PosX].GameObj != null;
 
-            while (!Map.GlobalMap.CurrentMap.IsBorder(NextPosition) || (findedObject = Map.GlobalMap.CurrentMap.Map[Position.PosY, Position.PosX].GameObj == null))
+            while (!findedObject && !Map.GlobalMap.CurrentMap.IsBorder(NextPosition))
             {
-                Position = NextPosition;
-                NextPosition = NextPositionHandler();
                 StepActionMethodRefs.Move(new Dictionary<StepActionParamTypes, object>() { { StepActionParamTypes.gameObject, this }, { StepActionParamTypes.newPosition, NextPosition } });
+
+                Position = NextPosition;
 
                 Console.Clear();
                 Map.GlobalMap.CurrentMap.DisplayMap();
-                Console.ReadKey();                
+                Console.ReadKey();
+
+                NextPosition = NextPositionHandler();
+                if (!Map.GlobalMap.CurrentMap.IsBorder(NextPosition))
+                    findedObject = (Map.GlobalMap.CurrentMap.Map[NextPosition.PosY, NextPosition.PosX].GameObj != null);
             }
             if(findedObject)
-            {
-                GameObject obj = Map.GlobalMap.CurrentMap.Map[Position.PosY, Position.PosX].GameObj;
+            {                
+                GameObject obj = Map.GlobalMap.CurrentMap.Map[NextPosition.PosY, NextPosition.PosX].GameObj;
                 obj.SubtractHP(Damage);
+                findedObject = false;
             }
-            else
-            {
-                Map.GlobalMap.CurrentMap.Map[Position.PosY, Position.PosX].UpdateGameObject(null);
-            }
+            Map.GlobalMap.CurrentMap.Map[Position.PosY, Position.PosX].UpdateGameObject(null);
         }
     }
 }

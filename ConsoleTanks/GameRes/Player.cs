@@ -32,6 +32,7 @@ namespace ConsoleTanks.GameRes
                             { StepActionParamTypes.newPosition, new Position(Tank.Position.PosX, Tank.Position.PosY - 1) },
                             { StepActionParamTypes.gameObject, Tank }
                         });
+                        Tank.ChangeDirection(Direction.Up);
                         return action;
                     }
                 case (ConsoleKey.S):
@@ -40,6 +41,7 @@ namespace ConsoleTanks.GameRes
                             { StepActionParamTypes.newPosition, new Position(Tank.Position.PosX, Tank.Position.PosY + 1) },
                             { StepActionParamTypes.gameObject, Tank }
                         });
+                        Tank.ChangeDirection(Direction.Down);
                         return action;
                     }
                 case (ConsoleKey.A):
@@ -48,6 +50,7 @@ namespace ConsoleTanks.GameRes
                             { StepActionParamTypes.newPosition, new Position(Tank.Position.PosX - 1, Tank.Position.PosY) },
                             { StepActionParamTypes.gameObject, Tank }
                         });
+                        Tank.ChangeDirection(Direction.Left);
                         return action;
                     }
                 case (ConsoleKey.D):
@@ -56,6 +59,7 @@ namespace ConsoleTanks.GameRes
                             { StepActionParamTypes.newPosition, new Position(Tank.Position.PosX + 1, Tank.Position.PosY) },
                             { StepActionParamTypes.gameObject, Tank }
                         });
+                        Tank.ChangeDirection(Direction.Right);
                         return action;
                     }
                 case (ConsoleKey.Spacebar):
